@@ -1,2 +1,2 @@
-# MeineRoute
-MeineRoute репозиторий для Телеграм бота
+# MeineRoute_bot
+Telegram Bot для проекта MeineRoute
