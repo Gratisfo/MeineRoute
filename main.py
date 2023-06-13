@@ -237,8 +237,14 @@ async def process_callback_story(callback_query: CallbackQuery):
         await asyncio.sleep(1)
 
     else:
+        MAX_MESSAGE_LENGTH = 4096
         story = row['story']
-        await bot.send_message(callback_query.from_user.id, text=story)
+        if len(story) <= MAX_MESSAGE_LENGTH:
+            await bot.send_message(callback_query.from_user.id, text=story)
+        else:
+            chunks = [story[i:i + MAX_MESSAGE_LENGTH] for i in range(0, len(story), MAX_MESSAGE_LENGTH)]
+            for chunk in chunks:
+                await bot.send_message(callback_query.from_user.id, text=chunk)
 
     if type(drink) != float:
         message = f'<b>Рекомендация от героя:</b>\n{drink}'
