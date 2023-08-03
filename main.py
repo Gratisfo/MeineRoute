@@ -35,9 +35,9 @@ users_to_notify = set()
 async def send_welcome(message: types.Message):
     users_to_notify.add(message.from_user.id)
     keyboard = InlineKeyboardMarkup(row_width=2)
-    button1 = InlineKeyboardButton(text="Бары с историями рядом", callback_data='nearby_bars')
-    button2 = InlineKeyboardButton(text="История рандомного бара", callback_data='random_bar')
-    button3 = InlineKeyboardButton(text="Список всех историй из баров", callback_data='list_all_bars')
+    button1 = InlineKeyboardButton(text="Бары рядом", callback_data='nearby_bars')
+    button2 = InlineKeyboardButton(text="Рандомный бар", callback_data='random_bar')
+    button3 = InlineKeyboardButton(text="Список всех баров", callback_data='list_all_bars')
     keyboard.add(button1, button2, button3)
     await message.answer(welcome_message, reply_markup=keyboard)
 
